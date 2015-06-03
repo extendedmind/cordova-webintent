@@ -41,6 +41,14 @@
         }, 'WebIntent', 'getUri', []);
     };
 
+    WebIntent.prototype.clearExtra = function(params, success, fail) {
+        return cordova.exec(function(args) {
+            success(args);
+        }, function(args) {
+            fail(args);
+        }, 'WebIntent', 'clearExtra', [params]);
+    };
+
     WebIntent.prototype.getExtra = function(params, success, fail) {
         return cordova.exec(function(args) {
             success(args);
@@ -48,7 +56,13 @@
             fail(args);
         }, 'WebIntent', 'getExtra', [params]);
     };
-
+    WebIntent.prototype.getExtras = function(success, fail) {
+        return cordova.exec(function(args) {
+            success(args);
+        }, function(args) {
+            fail(args);
+        }, 'WebIntent', 'getExtras', []);
+    };
 
     WebIntent.prototype.onNewIntent = function(callback) {
         return cordova.exec(function(args) {
@@ -66,7 +80,7 @@
     };
 
     window.webintent = new WebIntent();
-    
+
     // backwards compatibility
     window.plugins = window.plugins || {};
     window.plugins.webintent = window.webintent;
